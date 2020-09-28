@@ -18,6 +18,24 @@ def start():
     url2= "https://glados.rocks/api/user/status"
     referer = 'https://glados.rocks/console/checkin'
     checkin = requests.post(url,headers={'cookie': cookie ,'referer': referer })
+    headers = {
+        'authority': 'glados.rocks',
+        'accept': 'application/json, text/plain, */*',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+        'content-type': 'application/json;charset=UTF-8',
+        'origin': 'https://glados.rocks',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        'referer': 'https://glados.rocks/console/checkin',
+        'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+        'cookie': cookie,
+    }
+
+    data = '{"token":"glados_network"}'
+
+    checkin = requests.post(url, headers=headers, data=data)
+    
     state =  requests.get(url2,headers={'cookie': cookie ,'referer': referer})
    # print(res)
 
